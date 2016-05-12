@@ -54,7 +54,7 @@
          [TestMethod]
         public void EmptyCatchClause_Triggering_code_should_give_diagnostics()
         {
-            this.VerifyDiagnosticsForFile("EmptyCatchClauseInAwait.csx");
+            this.VerifyDiagnosticsForFile("EmptyCatchClauseInAwait.csx","EmptyCatchClause");
             
         }
 

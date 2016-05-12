@@ -138,4 +138,16 @@
   <data name="EmptyCatchClauseTitle" xml:space="preserve">
     <value>Catch clause is empty</value>
   </data>
+  <data name="MethodWithTooManyParametersCodeFix" xml:space="preserve">
+    <value>Add TODO comment of refactoring.</value>
+  </data>
+  <data name="MethodWithTooManyParametersDescription" xml:space="preserve">
+    <value>A method with more than 5 parameters is painful to call and might also degrade performance.</value>
+  </data>
+  <data name="MethodWithTooManyParametersMessageFormat" xml:space="preserve">
+    <value>Method with too many parameters</value>
+  </data>
+  <data name="MethodWithTooManyParametersTitle" xml:space="preserve">
+    <value>Method with too many parameters - critical</value>
+  </data>
 </root>

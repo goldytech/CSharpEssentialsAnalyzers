@@ -16,6 +16,8 @@
         /// <summary>
         /// The empty catch clause.
         /// </summary>
-        EmptyCatchClause = 1
+        EmptyCatchClause = 1,
+
+        MethodWithTooManyParameters = 2
     }
 }

@@ -114,6 +114,13 @@
     <None Include="TestData\EmptyCatchClause\AfterFix\RemoveTryCatchEmptyCatchClauseInAwait.csx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <Compile Include="Design\MethodWithTooManyParametersTest.cs" />
+    <None Include="TestData\MethodWithTooManyParameters\AfterFix\TodoRefactoringComment.csx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="TestData\MethodWithTooManyParameters\Triggering\MethodWithMoreThanFiveParameters.csx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Compile Include="Verifiers\CodeFixVerifier.cs" />
     <Compile Include="Verifiers\DiagnosticVerifier.cs" />
     <Compile Include="Helpers\CodeFixVerifier.Helper.cs" />
