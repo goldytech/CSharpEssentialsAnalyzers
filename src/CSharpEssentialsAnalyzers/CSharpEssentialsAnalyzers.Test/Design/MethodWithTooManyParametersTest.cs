@@ -28,8 +28,19 @@
         protected override bool TokenShouldTrigger(SyntaxToken token)
         {
             var parameterListSyntax = token.Parent as ParameterListSyntax;
-            return parameterListSyntax != null & !token.IsKind(SyntaxKind.IdentifierToken)
-                   && parameterListSyntax.Parameters.Count >= 5;
+
+            if (parameterListSyntax !=null)
+            {
+                if (parameterListSyntax.Parameters.Count >=5 && token.Kind() == SyntaxKind.OpenParenToken)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+            // return parameterListSyntax != null & !token.IsKind(SyntaxKind.IdentifierToken)
+               //    && parameterListSyntax.Parameters.Count >= 5;
+            return false;
         }
 
         protected override string CreateMessage(SyntaxToken token)
