@@ -33,9 +33,9 @@
            this.VerifyCSharpDiagnostic(test);
         }
 
-        protected void VerifyDiagnosticsForFile(string fileName)
+        protected void VerifyDiagnosticsForFile(string fileName,string analyzerFolder)
         {
-            string filePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory,"TestData","EmptyCatchClause","Triggering",fileName);
+            string filePath = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory,"TestData",analyzerFolder,"Triggering",fileName);
 
            
             var test = File.ReadAllText(filePath);

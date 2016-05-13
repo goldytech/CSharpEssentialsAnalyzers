@@ -123,5 +123,41 @@ namespace CSharpEssentialsAnalyzers {
                 return ResourceManager.GetString("EmptyCatchClauseTitle", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add TODO comment of refactoring..
+        /// </summary>
+        internal static string MethodWithTooManyParametersCodeFix {
+            get {
+                return ResourceManager.GetString("MethodWithTooManyParametersCodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A method with more than 5 parameters is painful to call and might also degrade performance..
+        /// </summary>
+        internal static string MethodWithTooManyParametersDescription {
+            get {
+                return ResourceManager.GetString("MethodWithTooManyParametersDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method with too many parameters.
+        /// </summary>
+        internal static string MethodWithTooManyParametersMessageFormat {
+            get {
+                return ResourceManager.GetString("MethodWithTooManyParametersMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method with too many parameters - critical.
+        /// </summary>
+        internal static string MethodWithTooManyParametersTitle {
+            get {
+                return ResourceManager.GetString("MethodWithTooManyParametersTitle", resourceCulture);
+            }
+        }
     }
 }

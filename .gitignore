@@ -5,6 +5,8 @@
 *.suo
 *.pdb
 *.swp
+*.dll
+*.vsix
 /packages/
 /bin/
 /debug/
