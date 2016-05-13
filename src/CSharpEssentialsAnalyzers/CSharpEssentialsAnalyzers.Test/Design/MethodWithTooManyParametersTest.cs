@@ -29,18 +29,8 @@
         {
             var parameterListSyntax = token.Parent as ParameterListSyntax;
 
-            if (parameterListSyntax !=null)
-            {
-                if (parameterListSyntax.Parameters.Count >=5 && token.Kind() == SyntaxKind.OpenParenToken)
-                {
-                    return true;
-                }
-
-                return false;
-            }
-            // return parameterListSyntax != null & !token.IsKind(SyntaxKind.IdentifierToken)
-               //    && parameterListSyntax.Parameters.Count >= 5;
-            return false;
+            return parameterListSyntax != null
+                   && (parameterListSyntax.Parameters.Count >= 5 && token.Kind() == SyntaxKind.OpenParenToken);
         }
 
         protected override string CreateMessage(SyntaxToken token)

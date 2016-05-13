@@ -125,6 +125,33 @@ namespace CSharpEssentialsAnalyzers {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lines of code exceeds the presribed number of 25.
+        /// </summary>
+        internal static string MethodTooLongDescription {
+            get {
+                return ResourceManager.GetString("MethodTooLongDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lines of code exceeds the presribed number of 25.
+        /// </summary>
+        internal static string MethodTooLongMessageFormat {
+            get {
+                return ResourceManager.GetString("MethodTooLongMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method too long.
+        /// </summary>
+        internal static string MethodTooLongTitle {
+            get {
+                return ResourceManager.GetString("MethodTooLongTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add TODO comment of refactoring..
         /// </summary>
         internal static string MethodWithTooManyParametersCodeFix {
