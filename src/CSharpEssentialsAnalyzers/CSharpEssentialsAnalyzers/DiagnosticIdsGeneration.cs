@@ -18,6 +18,8 @@
         /// </summary>
         EmptyCatchClause = 1,
 
-        MethodWithTooManyParameters = 2
+        MethodWithTooManyParameters = 2,
+
+        MethodTooLong  = 3
     }
 }

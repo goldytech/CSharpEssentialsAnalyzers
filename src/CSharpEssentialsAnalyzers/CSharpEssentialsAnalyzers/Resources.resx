@@ -138,6 +138,15 @@
   <data name="EmptyCatchClauseTitle" xml:space="preserve">
     <value>Catch clause is empty</value>
   </data>
+  <data name="MethodTooLongDescription" xml:space="preserve">
+    <value>Lines of code exceeds the presribed number of 25</value>
+  </data>
+  <data name="MethodTooLongMessageFormat" xml:space="preserve">
+    <value>Lines of code exceeds the presribed number of 25</value>
+  </data>
+  <data name="MethodTooLongTitle" xml:space="preserve">
+    <value>Method too long</value>
+  </data>
   <data name="MethodWithTooManyParametersCodeFix" xml:space="preserve">
     <value>Add TODO comment of refactoring.</value>
   </data>
