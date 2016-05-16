@@ -13,7 +13,7 @@
     {
         protected override string GetDiagnosticId()
         {
-            return MethodTooLongAnalyzer.DiagnosticId;
+            return MethodTooBigAnalyzer.DiagnosticId;
         }
 
         protected override DiagnosticSeverity GetSeverity()
@@ -24,31 +24,18 @@
         protected override bool TokenShouldTrigger(SyntaxToken token)
         {
             var methodDeclarationSyntax = token.Parent as MethodDeclarationSyntax;
+            return methodDeclarationSyntax != null && token.LeadingTrivia.Equals(token.TrailingTrivia)
+              && (methodDeclarationSyntax.Body.Statements.Count > MethodTooBigAnalyzer.MaximumLinesOfCode);
 
-            if (methodDeclarationSyntax != null)
-            {
-                var location = methodDeclarationSyntax.GetLocation();
-                var startline = location.GetLineSpan().StartLinePosition.Line;
-                var endline = location.GetLineSpan().EndLinePosition.Line;
-                if (endline - startline > 25)
-                {
-                    return true;
-                }
-                return false;
-            }
-
-            //return methodDeclarationSyntax != null
-            //      && (methodDeclarationSyntax.Body.Statements.Count > 25);
-            return false;
         }
 
         protected override string CreateMessage(SyntaxToken token)
         {
-            return string.Format(MethodTooLongAnalyzer.MessageFormat.ToString());
+            return string.Format(MethodTooBigAnalyzer.MessageFormat.ToString());
         }
 
         protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer()
-       => new MethodTooLongAnalyzer();
+       => new MethodTooBigAnalyzer();
 
         [TestMethod]
         public void Method_With_More_Than_25_Lines_Should_Trigger_Diagnostic()

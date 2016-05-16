@@ -7,14 +7,12 @@
     using Microsoft.CodeAnalysis.CSharp.Syntax;
     using Microsoft.CodeAnalysis.Diagnostics;
 
-    /// <summary>
-    /// The method too long analyzer.
-    /// </summary>
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class MethodTooLongAnalyzer : DiagnosticAnalyzer
+    public class MethodTooBigAnalyzer : DiagnosticAnalyzer
     {
-        
-         /// <summary>
+        public const int MaximumLinesOfCode = 25;
+
+        /// <summary>
         /// The diagnostic id.
         /// </summary>
         public static readonly string DiagnosticId = DiagnosticIds.MethodTooLong.ToDiagnosticId();
@@ -43,29 +41,27 @@
                                                      true,
                                                      Description);
 
-        /// <summary>
-        /// The maximum number of lines.
-        /// </summary>
-       // private const int MaximumNumberOfLines = 25;
-
         public override void Initialize(AnalysisContext context)
         {
-            context.RegisterSyntaxNodeAction(this.CheckMethodTooLong, SyntaxKind.MethodDeclaration);
-            
+            context.RegisterSyntaxNodeAction(this.CheckMethodLength, SyntaxKind.MethodDeclaration);
         }
 
-        private void CheckMethodTooLong(SyntaxNodeAnalysisContext syntaxNodeAnalysisContext)
+        private void CheckMethodLength(SyntaxNodeAnalysisContext syntaxNodeAnalysisContext)
         {
-            var methodDeclaration = syntaxNodeAnalysisContext.Node as MethodDeclarationSyntax;
-            if (methodDeclaration == null || methodDeclaration.Body.Statements.Count <= 25)
+            var method = syntaxNodeAnalysisContext.Node as MethodDeclarationSyntax;
+            if (method !=null)
             {
-                return;
-            }
 
-            var diagnostic = Diagnostic.Create(Rule, methodDeclaration.GetLocation(), Description);
-            syntaxNodeAnalysisContext.ReportDiagnostic(diagnostic);
+                if (method.Body.Statements.Count > MaximumLinesOfCode)
+                {
+                    var diagnostic = Diagnostic.Create(Rule, method.GetLocation(), Description);
+                    syntaxNodeAnalysisContext.ReportDiagnostic(diagnostic); 
+                }
+            }
+           
+           
         }
 
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; }
+        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
     }
 }

@@ -119,33 +119,33 @@ namespace TestHelper
                 var actual = actualResults.ElementAt(i);
                 var expected = expectedResults[i];
 
-                if (expected.Line == -1 && expected.Column == -1)
-                {
-                    if (actual.Location != Location.None)
-                    {
-                        Assert.IsTrue(false,
-                            string.Format("Expected:\nA project diagnostic with No location\nActual:\n{0}",
-                            FormatDiagnostics(analyzer, actual)));
-                    }
-                }
-                else
-                {
-                    VerifyDiagnosticLocation(analyzer, actual, actual.Location, expected.Locations.First());
-                    var additionalLocations = actual.AdditionalLocations.ToArray();
+                //if (expected.Line == -1 && expected.Column == -1)
+                //{
+                //    if (actual.Location != Location.None)
+                //    {
+                //        Assert.IsTrue(false,
+                //            string.Format("Expected:\nA project diagnostic with No location\nActual:\n{0}",
+                //            FormatDiagnostics(analyzer, actual)));
+                //    }
+                //}
+                //else
+                //{
+                //    VerifyDiagnosticLocation(analyzer, actual, actual.Location, expected.Locations.First());
+                //    var additionalLocations = actual.AdditionalLocations.ToArray();
 
-                    if (additionalLocations.Length != expected.Locations.Length - 1)
-                    {
-                        Assert.IsTrue(false,
-                            string.Format("Expected {0} additional locations but got {1} for Diagnostic:\r\n    {2}\r\n",
-                                expected.Locations.Length - 1, additionalLocations.Length,
-                                FormatDiagnostics(analyzer, actual)));
-                    }
+                //    if (additionalLocations.Length != expected.Locations.Length - 1)
+                //    {
+                //        Assert.IsTrue(false,
+                //            string.Format("Expected {0} additional locations but got {1} for Diagnostic:\r\n    {2}\r\n",
+                //                expected.Locations.Length - 1, additionalLocations.Length,
+                //                FormatDiagnostics(analyzer, actual)));
+                //    }
 
-                    for (int j = 0; j < additionalLocations.Length; ++j)
-                    {
-                        VerifyDiagnosticLocation(analyzer, actual, additionalLocations[j], expected.Locations[j + 1]);
-                    }
-                }
+                //    for (int j = 0; j < additionalLocations.Length; ++j)
+                //    {
+                //        VerifyDiagnosticLocation(analyzer, actual, additionalLocations[j], expected.Locations[j + 1]);
+                //    }
+                //}
 
                 if (actual.Id != expected.Id)
                 {
