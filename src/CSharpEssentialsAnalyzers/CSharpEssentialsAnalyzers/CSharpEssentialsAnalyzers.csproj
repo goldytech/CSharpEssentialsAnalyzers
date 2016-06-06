@@ -35,8 +35,10 @@
     <Compile Include="AnalyzerCategories.cs" />
     <Compile Include="Design\EmptyCatchClauseAnalyzer.cs" />
     <Compile Include="Design\EmptyCatchClauseCodeFix.cs" />
+    <Compile Include="Design\ConstructorDependencyInjectionAnalyzer.cs" />
     <Compile Include="Design\MethodTooBigAnalyzer.cs" />
     <Compile Include="Design\MethodWithTooManyParametersAnalyzer.cs" />
+    <Compile Include="Design\ConstructorDependencyInjectionCodeFix.cs" />
     <Compile Include="Design\MethodWithTooManyParametersCodeFix.cs" />
     <Compile Include="DiagnosticIdsGeneration.cs" />
     <Compile Include="Helpers\CodeFixHelpers.cs" />

@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CtorCodeFix" xml:space="preserve">
+    <value>Inject a new parameter in the constructor.</value>
+  </data>
+  <data name="CtorDescription" xml:space="preserve">
+    <value>Try to replace the hard depedency with constructor based dependency injection</value>
+  </data>
+  <data name="CtorMessageFormat" xml:space="preserve">
+    <value>ry to replace the hard depedency with constructor based dependency injection</value>
+  </data>
+  <data name="CtorTitle" xml:space="preserve">
+    <value>Use Constructor Dependency Injection</value>
+  </data>
   <data name="EmptyCatchClause00CodeFixMessage" xml:space="preserve">
     <value>Remove catch block</value>
   </data>

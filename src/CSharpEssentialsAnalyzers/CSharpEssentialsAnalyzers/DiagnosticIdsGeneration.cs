@@ -20,6 +20,9 @@
 
         MethodWithTooManyParameters = 2,
 
-        MethodTooLong  = 3
+        MethodTooLong  = 3,
+
+        //Constructor Dependency Injection
+        Ctor = 4
     }
 }

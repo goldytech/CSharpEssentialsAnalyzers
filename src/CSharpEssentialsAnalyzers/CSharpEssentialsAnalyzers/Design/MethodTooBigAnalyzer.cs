@@ -49,17 +49,11 @@
         private void CheckMethodLength(SyntaxNodeAnalysisContext syntaxNodeAnalysisContext)
         {
             var method = syntaxNodeAnalysisContext.Node as MethodDeclarationSyntax;
-            if (method !=null)
+            if (method?.Body != null && method.Body.Statements.Count > MaximumLinesOfCode)
             {
-
-                if (method.Body.Statements.Count > MaximumLinesOfCode)
-                {
-                    var diagnostic = Diagnostic.Create(Rule, method.GetLocation(), Description);
-                    syntaxNodeAnalysisContext.ReportDiagnostic(diagnostic); 
-                }
+                var diagnostic = Diagnostic.Create(Rule, method.GetLocation(), Description);
+                syntaxNodeAnalysisContext.ReportDiagnostic(diagnostic); 
             }
-           
-           
         }
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);

@@ -62,6 +62,42 @@ namespace CSharpEssentialsAnalyzers {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inject a new parameter in the constructor..
+        /// </summary>
+        internal static string CtorCodeFix {
+            get {
+                return ResourceManager.GetString("CtorCodeFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Try to replace the hard depedency with constructor based dependency injection.
+        /// </summary>
+        internal static string CtorDescription {
+            get {
+                return ResourceManager.GetString("CtorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ry to replace the hard depedency with constructor based dependency injection.
+        /// </summary>
+        internal static string CtorMessageFormat {
+            get {
+                return ResourceManager.GetString("CtorMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use Constructor Dependency Injection.
+        /// </summary>
+        internal static string CtorTitle {
+            get {
+                return ResourceManager.GetString("CtorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove catch block.
         /// </summary>
         internal static string EmptyCatchClause00CodeFixMessage {

@@ -12,3 +12,5 @@
 /debug/
 /obj/
 
+*.nupkg
+*.nuspec
