@@ -14,3 +14,13 @@
 
 *.nupkg
 *.nuspec
+/src/CSharpEssentialsAnalyzers/CSharpEssentialsAnalyzers.Test/bin/Debug/Microsoft.CodeAnalysis.CSharp.Workspaces.xml
+/src/CSharpEssentialsAnalyzers/CSharpEssentialsAnalyzers.Test/bin/Debug/Microsoft.CodeAnalysis.CSharp.xml
+/src/CSharpEssentialsAnalyzers/CSharpEssentialsAnalyzers.Test/bin/Debug/Microsoft.CodeAnalysis.VisualBasic.Workspaces.xml
+/src/CSharpEssentialsAnalyzers/CSharpEssentialsAnalyzers.Test/bin/Debug/Microsoft.CodeAnalysis.Workspaces.Desktop.xml
+/src/CSharpEssentialsAnalyzers/CSharpEssentialsAnalyzers.Test/bin/Debug/Microsoft.CodeAnalysis.Workspaces.xml
+/src/CSharpEssentialsAnalyzers/CSharpEssentialsAnalyzers.Test/bin/Debug/Microsoft.CodeAnalysis.xml
+/src/CSharpEssentialsAnalyzers/CSharpEssentialsAnalyzers.Test/bin/Debug/System.Collections.Immutable.xml
+/src/CSharpEssentialsAnalyzers/CSharpEssentialsAnalyzers.Test/bin/Debug/System.Composition.Hosting.xml
+*.xml
+*.cache

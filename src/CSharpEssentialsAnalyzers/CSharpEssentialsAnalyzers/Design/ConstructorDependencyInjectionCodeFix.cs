@@ -34,44 +34,46 @@
 
             var root = await document.GetSyntaxRootAsync(cancellationToken).ConfigureAwait(false);
             var node = root.FindNode(declarationSyntax.Location.SourceSpan);
-            var classdeclarationNode = constructorDeclarationSyntax.Parent as ClassDeclarationSyntax;
-            ConstructorDeclarationSyntax newCtorWithParameter;
-           // if (classdeclarationNode != null)
-          //  {
-           //     foreach (var fieldDeclaration in from syntaxNode in classdeclarationNode.ChildNodes() where syntaxNode.Kind() == SyntaxKind.FieldDeclaration select syntaxNode as FieldDeclarationSyntax)
-              //  {
-            //        var semanticModel = await document.GetSemanticModelAsync(cancellationToken).ConfigureAwait(false);
-             //       if (this.AnalyzeField(fieldDeclaration,semanticModel, ConstructorDependencyInjectionAnalyzer.ClassTypeData.Interfaces.FirstOrDefault().MetadataName))
-             //       {
-                       
-                 //   }
-               // }
-           // }
-            if (node != null)
+            var semanticModel = await document.GetSemanticModelAsync(cancellationToken).ConfigureAwait(false);
+            var fieldName = this.GetFieldVariableName(constructorDeclarationSyntax.Parent,ConstructorDependencyInjectionAnalyzer.ClassTypeData.Name,semanticModel);
+            if (fieldName == null)
             {
-                var nodetobeRemoved = root.RemoveNode(node, SyntaxRemoveOptions.KeepNoTrivia);
-
-                // remove existing assignment
-
-
-
-                // newCtorWithParameter = constructorDeclarationSyntax.Body.Statements.Insert(0,SyntaxFactory.ExpressionStatement())
-                newCtorWithParameter = constructorDeclarationSyntax.AddParameterListParameters(
-                     SyntaxFactory.Parameter(
-                         SyntaxFactory.Identifier(ConstructorDependencyInjectionAnalyzer.ClassTypeData.Name.ToLower()))
-                         .WithType(SyntaxFactory.ParseTypeName(ConstructorDependencyInjectionAnalyzer.ClassTypeData.Interfaces.FirstOrDefault().Name)));
-                //var doc = document.WithSyntaxRoot(nodetobeRemoved);
-                //doc = await
-                //  CodeFixHelpers.ReplaceNode(document, constructorDeclarationSyntax, newCtorWithParameter, cancellationToken)
-                //       .ConfigureAwait(false);
-
-                // return doc;
-
-               // return await
-                //        CodeFixHelpers.ReplaceNode(document, node, nodetobeRemoved, cancellationToken)
-                  //          .ConfigureAwait(false);
+                return null;
             }
-            return null;
+            var assignmentField = SyntaxFactory.ExpressionStatement(SyntaxFactory.AssignmentExpression(SyntaxKind.SimpleAssignmentExpression,
+                SyntaxFactory.MemberAccessExpression(SyntaxKind.SimpleMemberAccessExpression, SyntaxFactory.ThisExpression(),
+                    SyntaxFactory.IdentifierName(fieldName)), SyntaxFactory.IdentifierName(ConstructorDependencyInjectionAnalyzer.ClassTypeData.Name.ToLower().Substring(1, ConstructorDependencyInjectionAnalyzer.ClassTypeData.Name.Length - 1))));
+            
+                     
+            var  newConstructor =
+                constructorDeclarationSyntax.WithBody(constructorDeclarationSyntax.Body.AddStatements(assignmentField)).AddParameterListParameters(SyntaxFactory.Parameter(
+                    SyntaxFactory.Identifier(ConstructorDependencyInjectionAnalyzer.ClassTypeData.Name.ToLower().Substring(1, ConstructorDependencyInjectionAnalyzer.ClassTypeData.Name.Length - 1)))
+                    .WithType(SyntaxFactory.ParseTypeName(ConstructorDependencyInjectionAnalyzer.ClassTypeData.Name)));
+            return await CodeFixHelpers.ReplaceNode(document, constructorDeclarationSyntax, newConstructor, cancellationToken).ConfigureAwait(false);
+        }
+
+        private string GetFieldVariableName(SyntaxNode rootNode, string variableType,SemanticModel semanticModel)
+        {
+            foreach (var syntaxNode in rootNode.ChildNodes())
+            {
+                if (syntaxNode.Kind() == SyntaxKind.FieldDeclaration)
+                {
+                    var fieldDeclaration = syntaxNode as FieldDeclarationSyntax;
+                    if (fieldDeclaration == null)
+                    {
+                        continue;
+                    }
+
+                    foreach (var variableDeclaratorSyntax in fieldDeclaration.Declaration.Variables)
+                    {
+                        if (variableDeclaratorSyntax.Identifier.ValueText.Equals(variableType))
+                        {
+                            return variableDeclaratorSyntax.Identifier.ValueText;
+                        }
+                    }
+                }
+            }
+            return string.Empty;
         }
 
         private bool AnalyzeField(FieldDeclarationSyntax fieldDeclaration, SemanticModel semanticModel,string typeName)

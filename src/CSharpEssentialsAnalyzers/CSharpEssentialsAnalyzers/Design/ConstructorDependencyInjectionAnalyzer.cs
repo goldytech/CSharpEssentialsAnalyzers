@@ -64,14 +64,14 @@
 
             var classdeclarationNode = constructorDeclarationSyntax.Parent as ClassDeclarationSyntax;
             var semanticModel = syntaxNodeAnalysisContext.SemanticModel;
-            
-               
-                //if (this.CheckIfGivenParameterAlreadyExists(constructorDeclarationSyntax.ParameterList))
-                //{
-                //    return;
-                //}
 
-                foreach (var statementSyntax in constructorDeclarationSyntax.Body.Statements)
+
+            if (this.CheckIfGivenParameterAlreadyExists(constructorDeclarationSyntax.ParameterList))
+            {
+                return;
+            }
+
+            foreach (var statementSyntax in constructorDeclarationSyntax.Body.Statements)
                 {
                     if (statementSyntax.Kind() != SyntaxKind.ExpressionStatement)
                     {
@@ -100,14 +100,7 @@
                 return false;
             }
 
-            foreach (var parameter in parameterList.Parameters)
-            {
-                if (parameter.Identifier.Text == ClassTypeData.Interfaces.FirstOrDefault().Name.ToLower())
-                {
-                    return true;
-                }
-            }
-            return false;
+            return parameterList.Parameters.Any(parameter => parameter.Identifier.Text == ClassTypeData.Name.ToLower().Substring(1, ClassTypeData.Name.Length - 1));
         }
 
         private bool AnalyzeStatement(StatementSyntax statementSyntax, SemanticModel semanticModel)

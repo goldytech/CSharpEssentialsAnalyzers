@@ -4,16 +4,16 @@
     <id>CSharpEssentialsAnalyzers</id>
     <version>1.0.0.0</version>
     <title>CSharpEssentialsAnalyzers</title>
-    <authors>afzal.qureshi</authors>
-    <owners>afzal.qureshi</owners>
+    <authors>Goldytech</authors>
+    <owners>Goldytech</owners>
     <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
-    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
-    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
+    <projectUrl>https://github.com/goldytech/CSharpEssentialsAnalyzers/</projectUrl>
+    <!--<iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>-->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>CSharpEssentialsAnalyzers</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
-    <copyright>Copyright</copyright>
-    <tags>CSharpEssentialsAnalyzers, analyzers</tags>
+    <description>C# Essentials Analyzers is the collection of Roslyn analyzers and code fixes which promote some of the best industry practices. </description>
+    <releaseNotes>release notes url</releaseNotes>
+    <copyright>Copyright (c) 2016 GoldyTech -- akka Muhammad Afzal Qureshi</copyright>
+    <tags>CSharpEssentialsAnalyzers, analyzers,Roslyn</tags>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System" targetFramework="" />
     </frameworkAssemblies>
